@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claw-sentinel"
+version = "0.1.0"
+description = "Cross-platform system monitoring CLI with JSON alerts and Telegram dispatch"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Claw Team"}]
+keywords = ["monitoring", "cli", "telegram", "hardware", "psutil"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Monitoring",
+    "Topic :: System :: Systems Administration",
+]
+dependencies = [
+    "psutil>=5.9.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+]
+
+[project.scripts]
+claw-sentinel = "sentinel:main"
+
+[project.urls]
+Homepage = "https://github.com/claw-network/claw-sentinel"
+Repository = "https://github.com/claw-network/claw-sentinel.git"
+Documentation = "https://github.com/claw-network/claw-sentinel#readme"
+Issues = "https://github.com/claw-network/claw-sentinel/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[tool.setuptools.package-data]
+sentinel = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
