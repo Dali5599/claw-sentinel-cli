@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/banner.svg" alt="Project Banner" width="100%">
+</p>
+
 # claw-sentinel 🛡️⚡
 
 [![CI](https://github.com/Dali5599/claw-sentinel-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/Dali5599/claw-sentinel-cli/actions)
