@@ -1,0 +1,21 @@
+name: Bug Report
+description: Create a report to help us improve Claw Sentinel
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a bug!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly.
+    validations:
+      required: true
+  - type: input
+    id: os-version
+    attributes:
+      label: Operating System & Python Version
+      placeholder: Ubuntu 24.04, Python 3.12
+    validations:
+      required: true

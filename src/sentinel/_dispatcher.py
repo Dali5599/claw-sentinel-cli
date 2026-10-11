@@ -251,8 +251,12 @@ class AlertContext:
 # Factory
 # ---------------------------------------------------------------------------
 
-def make_dispatcher_from_config(config: Dict[str, Any]) -> CompositeDispatcher:
+def make_dispatcher_from_config(config: Any) -> CompositeDispatcher:
     """Build a dispatcher tree from the parsed configuration."""
+    if hasattr(config, "as_dict"):
+        config = config.as_dict()
+    elif not isinstance(config, dict) and hasattr(config, "dispatch"):
+        config = {"dispatch": config.dispatch}
     channels = config.get("dispatch", {}).get("channels", {})
     telegram_cfg = channels.get("telegram", {})
 

@@ -94,8 +94,12 @@ def _positive_int(value: str) -> int:
     return i
 
 
-def _tags(value: str) -> Set[str]:
-    return {t.strip() for t in value.split(",") if t.strip()}
+def _tags(value: Any) -> Set[str]:
+    if isinstance(value, set):
+        return value
+    if isinstance(value, (list, tuple)):
+        return set(value)
+    return {t.strip() for t in str(value).split(",") if t.strip()}
 
 
 def _json_file(value: str) -> Dict[str, Any]:

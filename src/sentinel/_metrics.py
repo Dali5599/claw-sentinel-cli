@@ -12,12 +12,13 @@ import datetime
 import os
 import platform
 import time
+import dataclasses
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 import psutil
 
-from ._discovery import HostInfo, Service, list_services, IS_LINUX, IS_WINDOWS, IS_DARWIN
+from ._discovery import HostInfo, Service, list_services, IS_LINUX, IS_WINDOWS, IS_DARWIN, get_host_info
 
 # Virtual / pseudo file systems that are not worth reporting.
 _IGNORED_FS: Set[str] = {
@@ -27,7 +28,7 @@ _IGNORED_FS: Set[str] = {
 }
 _IGNORED_MOUNT_PREFIXES = (
     "/proc", "/sys", "/dev", "/run", "/sys/fs", "/sys/kernel", "/sys/fs/cgroup",
-    "/boot/efi",
+    "/boot/efi", "/snap",
 )
 
 
@@ -123,6 +124,8 @@ class Snapshot:
         """Export as a JSON-serializable nested dictionary."""
         d = dataclasses.asdict(self)
         d["host"] = self.host.to_dict()
+        if hasattr(self.timestamp, "isoformat"):
+            d["timestamp"] = self.timestamp.isoformat()
         return d
 
 
@@ -225,7 +228,7 @@ def collect_memory() -> MemoryInfo:
 
 
 def collect_disks() -> List[DiskInfo]:
-    partitions = psutil.disk_partitions(include_fs=True)
+    partitions = psutil.disk_partitions(all=False)
     result = []
     for part in partitions:
         # Skip virtual/pseudo mounts early.

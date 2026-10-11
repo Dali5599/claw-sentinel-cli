@@ -1,4 +1,11 @@
-# claw-sentinel
+# claw-sentinel 🛡️⚡
+
+[![CI](https://github.com/Dali5599/claw-sentinel-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/Dali5599/claw-sentinel-cli/actions)
+[![Stars](https://img.shields.io/github/stars/Dali5599/claw-sentinel-cli?style=flat-square&color=ffd700)](https://github.com/Dali5599/claw-sentinel-cli/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Python: 3.11+](https://img.shields.io/badge/python-3.11+-brightgreen.svg?style=flat-square)](https://python.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Dali5599/claw-sentinel-cli/pulls)
+[![Engineered by Requin](https://img.shields.io/badge/Engineered_by-Requin_AI_Agent-indigo?style=flat-square)](https://github.com/Dali5599)
 
 Cross-platform system monitoring CLI with customizable JSON alerts and a Telegram webhook dispatcher.
 
